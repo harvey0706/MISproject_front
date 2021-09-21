@@ -13,14 +13,26 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="82dp"
-        android:layout_marginTop="43dp"
-        android:text="Login here.."
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Crowdmap"
+        android:textSize="60sp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
         android:textColor="#ffffff"
+        android:layout_marginTop="50dp"
         />
+
+
+    <TextView
+        android:id="@+id/bannerDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView1"
+        android:layout_centerHorizontal="true"
+        android:text="Your awesome app"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/editTextpassword"
