@@ -23,13 +23,15 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="false"
-        tools:ignore="GoogleAppIndexingWarning" >
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:icon,android:theme,android:allowBackup">
         <activity
-            android:name=".PositioningActivity"
+            android:name=".BrowsingActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,6 +57,10 @@
         <activity
             android:name=".EditModelActivity"
             android:label="@string/app_name" />
+        <activity android:name=".Coupon"
+            android:label="HelloAR"/>
+        <activity android:name=".LeaderActivity"
+            android:label="HelloAR"/>
         <meta-data
             android:name="com.google.ar.core"
             android:value="required" />

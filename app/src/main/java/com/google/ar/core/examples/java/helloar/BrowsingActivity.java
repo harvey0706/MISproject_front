@@ -1,7 +1,6 @@
 package com.google.ar.core.examples.java.helloar;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class PositioningActivity extends Activity {
+public class BrowsingActivity extends Activity {
 
     RecyclerView recyclerView;
     DatabaseReference database;
@@ -27,7 +26,7 @@ public class PositioningActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_positioning);
+        setContentView(R.layout.activity_browsing);
 
         recyclerView = findViewById(R.id.LocationList);
         database = FirebaseDatabase.getInstance().getReference("Locations");

@@ -10,7 +10,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.TextView;
 import android.widget.Toast;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import org.w3c.dom.Text;
 
 public class EditModelActivity extends Activity {
 
@@ -18,6 +21,7 @@ public class EditModelActivity extends Activity {
     EditText textName;
     EditText textLocation;
     EditText textTime;
+    TextView starText;
 
 
     @Override
@@ -30,7 +34,7 @@ public class EditModelActivity extends Activity {
         textLocation=(EditText)findViewById(R.id.editTextLocation);
         textTime=(EditText)findViewById(R.id.editTextTime);
         doneButton=(Button)findViewById(R.id.DoneButton);
-
+        starText = (TextView)findViewById(R.id.starText);
 
 
         doneButton.setOnClickListener(new OnClickListener() {
@@ -53,9 +57,24 @@ public class EditModelActivity extends Activity {
                     textTime.setError("please enter time");
                 }
                 else {
-                    Intent intent =new Intent(EditModelActivity.this,MenuActivity.class);
-                    startActivity(intent);
-                    Toast.makeText(getApplicationContext(), "Model added successfully", Toast.LENGTH_SHORT).show();
+                    int star;
+                    star = Integer.parseInt(starText.getText().toString());
+                    star = star + 5;
+                    starText.setText(star);
+                    new SweetAlertDialog(EditModelActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                            .setTitleText("Well Done!")
+                            .setContentText("You got 5 stars & a coupon!")
+                            .setConfirmText("Ok")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.dismissWithAnimation();
+                                    Intent intent = new Intent(EditModelActivity.this,MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    startActivity(intent);
+                                }
+                            })
+                            .show();
                 }
             }
         });

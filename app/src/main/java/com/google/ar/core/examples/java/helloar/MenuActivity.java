@@ -3,25 +3,48 @@ package com.google.ar.core.examples.java.helloar;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.cardview.widget.CardView;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MenuActivity extends Activity {
 
     Button logout;
-    public CardView cardModel, cardPosition;
+    public CardView cardModel, cardBrowse, cardPosition;
+    ImageButton leader,coupon;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
 
         cardModel = (CardView) findViewById(R.id.modelingButton);
+        cardBrowse = (CardView) findViewById(R.id.browsingButton);
         cardPosition = (CardView) findViewById(R.id.positioningButton);
         logout = (Button)findViewById(R.id.buttonLogout);
+        leader = (ImageButton)findViewById(R.id.leaderIcon);
+        coupon = (ImageButton)findViewById(R.id.couponIcon);
+
+        leader.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this,LeaderActivity.class);
+                startActivity(intent);
+            }
+        });
+        coupon.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this,Coupon.class);
+                startActivity(intent);
+            }
+        });
 
         cardModel.setOnClickListener(new OnClickListener() {
             @Override
@@ -31,11 +54,18 @@ public class MenuActivity extends Activity {
             }
         });
 
+        cardBrowse.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MenuActivity.this,BrowsingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         cardPosition.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuActivity.this,PositioningActivity.class);
-                startActivity(intent);
+                //待補上定位的Activity
             }
         });
 
@@ -44,9 +74,20 @@ public class MenuActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(MenuActivity.this,MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
+                new SweetAlertDialog(MenuActivity.this, SweetAlertDialog.SUCCESS_TYPE)
+                        .setTitleText("Well Done!")
+                        .setContentText("You got 5 stars!")
+                        .setConfirmText("Ok")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                                Intent intent = new Intent(MenuActivity.this,MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
+                        })
+                        .show();
 
             }
         });
