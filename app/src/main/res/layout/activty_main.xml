@@ -16,10 +16,10 @@
             android:textColor="@color/lightorange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome"
+            android:text="What's Inside"
             android:layout_gravity="center"
             android:layout_marginTop="150dp"
-            android:textSize="60sp"
+            android:textSize="60dp"
             android:textStyle="bold"/>
         <TextView
             android:textColor="@color/lightorangedark"
@@ -28,7 +28,7 @@
             android:layout_gravity="center"
             android:text="Scan it, Find it."
             android:textAlignment="center"
-            android:textSize="30sp"
+            android:textSize="40sp"
             android:layout_marginTop="50dp"/>
     </LinearLayout>
     <LinearLayout

@@ -57,10 +57,6 @@ public class EditModelActivity extends Activity {
                     textTime.setError("please enter time");
                 }
                 else {
-                    int star;
-                    star = Integer.parseInt(starText.getText().toString());
-                    star = star + 5;
-                    starText.setText(star);
                     new SweetAlertDialog(EditModelActivity.this, SweetAlertDialog.SUCCESS_TYPE)
                             .setTitleText("Well Done!")
                             .setContentText("You got 5 stars & a coupon!")
@@ -69,7 +65,7 @@ public class EditModelActivity extends Activity {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
                                     sDialog.dismissWithAnimation();
-                                    Intent intent = new Intent(EditModelActivity.this,MainActivity.class);
+                                    Intent intent = new Intent(EditModelActivity.this,MenuActivity.class);
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                 }
